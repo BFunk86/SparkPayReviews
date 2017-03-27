@@ -191,17 +191,10 @@ $(function(){
         return text.slice(0, amount) + "...";
     } // end trimText()
 
-    /**
-     * The repeatTag is used to repeat a tag multiple time. This is to fix a problem caused by repeat not working in
-     * Internet Explorer
-     * @param tag: The tag to be repeated.
-     * @param num: The number of times to be repeated.
-     */
-    function repeatTag(tag, num) {
-        for(var index = 0; index < num; index++) {
-            tag += tag;
-        } // end for loop
-    } // end repeatTag
+    // add repeat function so that it works in Internet Explorer
+    String.prototype.repeat = function( num ) {
+        return new Array( num + 1 ).join( this );
+    } // end repeat
 
     // Check if reviews are being called on the page
     if (document.getElementById("reviews") !== null) {
